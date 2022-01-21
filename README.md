@@ -1,6 +1,7 @@
--# Airline-reservation-and-management-system
+- # Airline-reservation-and-management-system
 
-**Udaan - Airline Reservation and Management system **is  my *first year  academic group-project*
+**Udaan - Airline Reservation and Management system **is  my *first year  academic group-project* -
+
  `Language used` - java
  
  `Ide used` -Eclipse Ide
@@ -8,8 +9,10 @@
  `Data base used` - Microsoft Acess
  
 In this 'Airline Reservation System Project' we have two user- **1)Customer 2)The Administrator**. 
+
 **In Customer Window**
 Customer is able to login , check his/her all BookingDetails,PaymentDetails,CancellationDetails,All Flights ,able to register his/her query and can also see the answer of the queries and notifications"
+
 **In the administrative part**
 Anyone from admin department login and can change all the Flight information, can see all custromer ,all customer payments,cancellation, booking and query and can answer these queries as well and can also add the notification have to show on this window.
 
