@@ -51,18 +51,17 @@ ALLFlight(){
     b1=new JButton("SHOW");
     b1.addActionListener(this);
     b1.setBounds(220,200,120,30);
-	b1.setBackground(Color.BLACK);
+	b1.setBackground(new Color(0.0f,0.0f,0.5f));
 	b1.setForeground(Color.WHITE);
 	add(b1);
 	  ImageIcon i1=new ImageIcon("C:\\Users\\Home\\Downloads\\aer.jpeg");
 		Image i2=i1.getImage().getScaledInstance(300, 120, Image.SCALE_DEFAULT);
 		ImageIcon i3=new ImageIcon(i2);
-		
 		JLabel image=new JLabel(i3);
 		
 		image.setBounds(550, 30, 300, 120);
 		add(image);
-		getContentPane().setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.white);
     setSize(900,650);
 	setVisible(true);
 	setLocation(400,100);

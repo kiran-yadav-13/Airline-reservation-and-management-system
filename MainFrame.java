@@ -5,6 +5,24 @@ import javax.swing.*;
 import java.io.*;
 import java.sql.*;
 import Airline_Management_System.Login1;
+class east extends JPanel{
+	int x=0 ,y=100;
+	public void paint(Graphics g) {
+		super.paint(g);
+		Graphics2D g2=(Graphics2D)g;
+		Font font =new Font("Tahoma", Font.BOLD+Font.PLAIN, 100);
+		g2.setFont(font);
+		g2.setColor(Color.BLACK);
+		g2.drawString("East", x, y);
+		try{Thread.sleep(100);}catch(Exception ex) {}
+		x+=10;
+		if(x>this.getWidth())
+		{
+			x=0;
+		}
+		repaint();
+	}
+}
 public  class MainFrame extends JFrame  implements ActionListener{
 	JButton b1,b2;
 	JLabel jlab2,jlab,jlab3,l1,l2,l3,l4,l5,l6;
@@ -14,17 +32,22 @@ public  class MainFrame extends JFrame  implements ActionListener{
 	Connection con;
 	ResultSet result;
 	String sql;
+	east e;
 	String conUrl="jdbc:ucanaccess://C:\\Users\\Home\\Documents\\Login.accdb";
 public MainFrame() {
 	super("AIRLINE RESERVATION MANAGEMENT SYSTEM");
+	
 	initialize();
+	
 	setVisible(true);
 	setSize(1920,990);
 }
 
 private void initialize() {
 	setForeground(Color.cyan);
-	setLayout(new FlowLayout());
+	e=new east();
+	e.repaint();
+	e.setLayout(new FlowLayout());
 	ImageIcon i1=new ImageIcon("C:\\Users\\Home\\Downloads\\Wllpaper1.png");
 	Image i2=i1.getImage().getScaledInstance(1380, 750, Image.SCALE_DEFAULT);
 	ImageIcon i3=new ImageIcon(i2);
@@ -33,8 +56,8 @@ private void initialize() {
 	
 	add(jlab);
 	
-	JLabel jlab1=new JLabel("INDIAN  AIRLINES  WELCOMES  YOU");
-	jlab1.setForeground(new Color(255,92,41));
+	JLabel jlab1=new JLabel("UDAAN  AIRLINES  WELCOMES  YOU");
+	jlab1.setForeground(new Color(97,120,153));
 	jlab1.setFont(new Font("Taboma", Font.BOLD,20));
 	
 	jlab1.setBounds(570, 60, 1000, 55);
@@ -82,12 +105,12 @@ private void initialize() {
 	b1=new JButton("Adminstrative Dept");
 	b1.setBounds(1000,0,150,30);
 	b1.addActionListener(this);
-	b1.setBackground(new Color(255,92,51));
+	b1.setBackground(new Color(97,120,153));
 	b1.setForeground(Color.WHITE);
 	b2=new JButton("Sign Up");
 	b2.setBounds(1170,0,135,30);
 	b2.addActionListener(this);
-	b2.setBackground(new Color(255,92,51));
+	b2.setBackground(new Color(97,120,153));
 	b2.setForeground(Color.WHITE);
 	jlab.add(b2);
 	jlab.add(b1);
@@ -110,7 +133,7 @@ private void initialize() {
 		JLabel no=new JLabel("Notifications Box");
 		no.setFont(f1);
 		no.setBounds(1005,50,150,27);
-		no.setForeground(new Color(255,92,51));
+		no.setForeground(new Color(97,120,153));
 		jlab.add(no);
 		JComboBox<String> jcb=new JComboBox<String>(n);
 		jcb.setBounds(1005,95, 300, 20);
@@ -241,6 +264,16 @@ public void actionPerformed(ActionEvent a) {
 		}
 		
 	}
+	 else if(str.equals("cancel Ticket"))
+	 {
+		 try {
+				new Cancellation();
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+	 }
 	 else if(str.equals("About us"))
 	{
 		 jlab3.setText("About US");

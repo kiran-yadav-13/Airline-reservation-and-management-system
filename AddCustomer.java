@@ -30,7 +30,7 @@ public AddCustomer() {
 	//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	f1=new Font("Tahoma",Font.PLAIN,17);
 	l0=new JLabel("ADD  YOUR  DETAILS");
-	l0.setBounds(420, 20, 250, 27);
+	l0.setBounds(450, 20, 250, 27);
 	l0.setFont(new Font("Tahoma",Font.PLAIN,22));
 	add(l0);
 	l1=new JLabel("Name");
@@ -127,8 +127,8 @@ public AddCustomer() {
 	add(g2);
 	//b1.addActionListener(this);
 	
-ImageIcon i1=new ImageIcon("C:\\Users\\Home\\Downloads\\pr1.jpeg");
-Image i2=i1.getImage().getScaledInstance(280, 390, Image.SCALE_DEFAULT);
+ImageIcon i1=new ImageIcon("C:\\Users\\Home\\Downloads\\ppl.jpeg");
+Image i2=i1.getImage().getScaledInstance(280, 370, Image.SCALE_DEFAULT);
 ImageIcon i3=new ImageIcon(i2);
 
 JLabel image=new JLabel(i3);

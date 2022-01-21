@@ -78,7 +78,7 @@ public class TicketBook extends JFrame implements ActionListener {
 
         JLabel Gender = new JLabel("GENDER");
         Gender.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        Gender.setBounds(500, 80, 150, 27);
+        Gender.setBounds(485, 80, 150, 27);
         add(Gender);
 
          NewRadioButton = new JRadioButton("MALE");
@@ -93,7 +93,7 @@ public class TicketBook extends JFrame implements ActionListener {
 
         JLabel Phno = new JLabel("PH NO");
         Phno.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        Phno.setBounds(500, 120, 150, 27);
+        Phno.setBounds(485, 120, 150, 27);
         add(Phno);
 
         textField_4 = new JTextField();
@@ -102,7 +102,7 @@ public class TicketBook extends JFrame implements ActionListener {
 
         JLabel age = new JLabel("Age");
         age.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        age.setBounds(500, 170, 150, 27);
+        age.setBounds(485, 170, 150, 27);
         add(age);
 
         textField_5 = new JTextField();
@@ -111,7 +111,7 @@ public class TicketBook extends JFrame implements ActionListener {
 
         JLabel email = new JLabel("Email-Id");
         email.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        email.setBounds(500, 220, 150, 27);
+        email.setBounds(485, 220, 150, 27);
         add(email);
 
         textField_6 = new JTextField();
@@ -155,7 +155,7 @@ public class TicketBook extends JFrame implements ActionListener {
     		
     	 JLabel Destination = new JLabel("DESTINATION");
     	Destination.setFont(new Font("Tahoma", Font.PLAIN, 17));
-    	Destination.setBounds(60, 500, 94, 20);
+    	Destination.setBounds(60, 500, 110, 20);
     	add(Destination);
     	
     	 t3 = new JTextField();
@@ -173,7 +173,7 @@ public class TicketBook extends JFrame implements ActionListener {
         
         JLabel at = new JLabel("ARIVAL TIME");
         at.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        at.setBounds(500, 350, 150, 27);
+        at.setBounds(485, 350, 160, 27);
     	add(at);
     	
     	 t5 = new JTextField();
@@ -182,7 +182,7 @@ public class TicketBook extends JFrame implements ActionListener {
        
         JLabel dt = new JLabel("DEPARTURE TIME");
         dt.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        dt.setBounds(500, 400, 94, 20);
+        dt.setBounds(485, 400, 120, 20);
     	add(dt);
     	
     	 t6 = new JTextField();
@@ -191,7 +191,7 @@ public class TicketBook extends JFrame implements ActionListener {
 
         JLabel cc = new JLabel("CLASS CODE");
         cc.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        cc.setBounds(500, 450, 94, 20);
+        cc.setBounds(485, 450, 160, 20);
     	add(cc);
     	
     	 t7 = new JTextField();
@@ -200,7 +200,7 @@ public class TicketBook extends JFrame implements ActionListener {
         
         JLabel cn = new JLabel("CLASS NAME");
         cn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        cn.setBounds(500, 500, 150, 27);
+        cn.setBounds(485, 500, 160, 27);
     	add(cn);
     	
     	 t8 = new JTextField();
@@ -209,7 +209,7 @@ public class TicketBook extends JFrame implements ActionListener {
         
         JLabel date = new JLabel("DATE");
         date.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        date.setBounds(500, 550, 150, 27);
+        date.setBounds(485, 550, 160, 27);
     	add(date);
     	
     	 t9 = new JTextField();

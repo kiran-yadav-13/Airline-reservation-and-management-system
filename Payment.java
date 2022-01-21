@@ -8,11 +8,17 @@ import javax.swing.border.TitledBorder;
 import net.proteanit.sql.DbUtils;
 import java.io.*;
 import java.sql.*;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+import com.sun.net.httpserver.Authenticator;
+import com.sun.net.httpserver.HttpExchange;
 public class Payment extends JFrame implements ActionListener{
      
-     JTextField t1,t2,t3,t4,t5,t6,t8,t9;
+     JTextField t1,t2,t3,t4,t5,t6,t8,t7,t9;
  	JLabel l0,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10;
     Font f1;
+    String email;
     JButton b1,b2;
  	PreparedStatement preparedStatement;
  	Statement statement;
@@ -62,13 +68,18 @@ public class Payment extends JFrame implements ActionListener{
  		l6.setBounds(60,275,150,27);
  		t6=new JTextField(60);
  		t6.setBounds(250,275,150,27);
+ 		l7=new JLabel("Email Id");
+ 	    l7.setFont(f1);
+ 		l7.setBounds(60,315,150,27);
+ 		t7=new JTextField(60);
+ 		t7.setBounds(250,315,150,27);
  		b1=new JButton("PAY");
- 		b1.setBounds(220,330,135,30);
+ 		b1.setBounds(220,350,135,30);
  		b1.addActionListener(this);
  		b1.setBackground(Color.BLACK);
  		b1.setForeground(Color.WHITE);
  		b2=new JButton("RESET");
- 		b2.setBounds(60,330,135,30);
+ 		b2.setBounds(60,350,135,30);
  		b2.addActionListener(this);
  		b2.setBackground(Color.BLACK);
  		b2.setForeground(Color.WHITE);
@@ -86,7 +97,8 @@ public class Payment extends JFrame implements ActionListener{
  		add(t5);
  		add(l6);
  		add(t6);
- 		
+ 		add(l7);
+ 		add(t7);
  		JPanel panel=new JPanel();
  		panel.setBorder(new TitledBorder(new LineBorder(new Color(0,0,0),2),"All the fields are necessary to be filled",
  				TitledBorder.LEADING, TitledBorder.TOP, null ,new Color(34,139,34)));
@@ -119,6 +131,7 @@ public class Payment extends JFrame implements ActionListener{
  		
      }
      public void actionPerformed(ActionEvent a) {
+    	 email=t7.getText();
     	 String s=a.getActionCommand();
     	 if(s.equals("RESET")) {
     		    t1.setText("");
@@ -132,10 +145,11 @@ public class Payment extends JFrame implements ActionListener{
     		 try {
     				Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
     	        	 con=DriverManager.getConnection(conUrl);
+    	        	 
 
     				if(con!=null) {
     					System.out.println("Connected Sucessfully");
-    					sql="insert into Payments(Amount,FlightCode,ClassCode,PayDate,PassportNo,CardNo) values(?,?,?,?,?,?)";
+    					sql="insert into Payments(Amount,FlightCode,ClassCode,PayDate,PassportNo,CardNo,EmailId) values(?,?,?,?,?,?,?)";
     					preparedStatement=con.prepareStatement(sql);
     					preparedStatement.setString(1, t1.getText());
     					preparedStatement.setString(2, t2.getText());
@@ -143,6 +157,7 @@ public class Payment extends JFrame implements ActionListener{
     				   preparedStatement.setString(4, t4.getText());
     					preparedStatement.setInt(5,Integer.parseInt(t5.getText()));
     					preparedStatement.setInt(6, Integer.parseInt(t6.getText()));
+    					preparedStatement.setString(7, t7.getText());
     					int row=preparedStatement.executeUpdate();
     					if(row>0) {
     						System.out.println("Details Inserted Sucessfully");
@@ -161,9 +176,21 @@ public class Payment extends JFrame implements ActionListener{
         					if(row>0)
         					{System.out.println("Record updated in Sector table Sucessfully");
         			         JOptionPane.showMessageDialog(null, "Booking Completed");
+        			         System.out.println("preparing to send message.. ");
+        			         String message="Congratulations!!.\nYour Ticket has been booked sucessfully from udaan Airlines.We  wishu you a Happy journey\n\nRegards\nUdaan Airlines.";
+        			         String subject="Airticket Confiramation mail";
+        			        
+        			         String to=email;
+        			         String from="airlinesudaan@gmail.com";
+        			         sendEmail(message,subject,to,from);
+//        			         sendAttach(message,subject,to,from);
         			         setVisible(false);
-        					}
-    						}
+        			         
+        			  	}
+        			  	
+        			  	
+        			  	
+    					}
     					
     					
     				}
@@ -173,6 +200,7 @@ public class Payment extends JFrame implements ActionListener{
 					System.out.println(e);
 				}}
      }
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		SwingUtilities.invokeLater(new Runnable() {
@@ -182,4 +210,50 @@ public class Payment extends JFrame implements ActionListener{
 		});
 	}
 
+	// this method is used to send the message
+void sendEmail(String message, String subject, String to, String from) {
+		// TODO Auto-generated method stub
+		//variable of gmail host;
+		String host="smtp.gmail.com";
+		
+		//get system properties;
+		Properties properties=System.getProperties();
+		System.out.println("Properties : "+properties);
+		
+		// setting important information to properties object
+		//host set
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.port", "465");
+		properties.put("mail.smtp.ssl.enable", "true");
+		properties.put("mail.smtp.auth", "true");
+		
+		// step 1 : to get the session object 
+		Session session =Session.getInstance( properties,new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("airlinesudaan@gmail.com","udaan@123");
+			}
+		});
+		try {
+		session.setDebug(true);
+		//step 2 :compose the message 
+		MimeMessage m=new MimeMessage(session);
+		//from
+		m.setFrom(new InternetAddress(from));
+		// adding recipient to message
+		m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+		//adding subject to message
+		m.setSubject(subject);
+		//adding text to message
+		m.setText(message);
+		//send
+		// step 3 : send the message using transport class
+		Transport.send(m);
+		System.out.println("message sent..");
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+    
+     
+	}
 }
