@@ -16,7 +16,7 @@ Customer is able to login , check his/her all BookingDetails,PaymentDetails,Canc
 **In the administrative part**
 Anyone from admin department login and can change all the Flight information, can see all custromer ,all customer payments,cancellation, booking and query and can answer these queries as well and can also add the notification have to show on this window.
 
-**Although this project is already exsisted but we try to implement some of these unique fewatures in it : **
+**Although this project is already exsisted but we try to implement some of these unique fewatures in it :**
 
 **1)** We have separated the customer UI and the management UI so that any random user cannot modify the flight details or any other details.
 
