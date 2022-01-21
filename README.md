@@ -1,6 +1,6 @@
 - # Airline-reservation-and-management-system
 
-**Udaan - Airline Reservation and Management system **is  my *first year  academic group-project* -
+**Udaan - Airline Reservation and Management system** is my *first year  academic group-project* 
 
  `Language used` - java
  
